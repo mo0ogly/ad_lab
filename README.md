@@ -68,7 +68,7 @@ Concu pour tester et valider les outils d'audit de securite AD :
 
 # 3. Dans la console Hyper-V :
 #    - Installer Windows Server 2022 Desktop Experience
-#    - Mot de passe Administrator : Cim22091956!!??
+#    - Mot de passe Administrator : (voir config.ps1)
 
 # 4. Deployer le lab automatiquement (copie + execute les scripts dans la VM)
 .\run_in_vm.ps1
@@ -109,7 +109,7 @@ Le script :
 
 **Apres execution** : la console Hyper-V s'ouvre. Appuyez vite sur une touche pour booter
 sur le DVD, puis installez Windows Server 2022 **Desktop Experience**.
-Mot de passe Administrator : `Cim22091956!!??`
+Mot de passe Administrator : `(voir config.ps1)`
 
 ### Etape 2 — Deploiement automatique (sur l'hote)
 
@@ -346,12 +346,12 @@ ad_lab/
 
 | Compte | Mot de passe | Usage |
 |--------|-------------|-------|
-| `Administrator` | `Cim22091956!!??` | Admin local / DSRM |
-| `LAB\Administrator` | `Cim22091956!!??` | Admin domaine |
-| Tous les users standard | `Cim22091956!!??` | Mot de passe par defaut |
-| Comptes `adm.*` | `Adm1n!Cim22091956!!??` | Comptes admin |
+| `Administrator` | `(voir config.ps1)` | Admin local / DSRM |
+| `LAB\Administrator` | `(voir config.ps1)` | Admin domaine |
+| Tous les users standard | `(voir config.ps1)` | Mot de passe par defaut |
+| Comptes `adm.*` | `Adm1n!(voir config.ps1)` | Comptes admin |
 | Comptes faibles | `Password1` | Services legacy, partenaires |
-| `PARTNER\Administrator` | `Cim22091956!!??` | Admin partner.local |
+| `PARTNER\Administrator` | `(voir config.ps1)` | Admin partner.local |
 
 ---
 

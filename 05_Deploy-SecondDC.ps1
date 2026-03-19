@@ -29,8 +29,16 @@ param(
     [int64]$RAM           = 2GB,
     [int]$CPU             = 2,
     [int64]$DiskSize      = 60GB,
-    [string]$OutputScripts = "C:\HyperV\setup-scripts"
+    [string]$OutputScripts = "C:\HyperV\setup-scripts",
+    [string]$SafePassword  = ""
 )
+
+# Charger config si pas de mot de passe fourni
+if (-not $SafePassword) {
+    $configPath = Join-Path $PSScriptRoot "config.ps1"
+    if (Test-Path $configPath) { . $configPath; $SafePassword = $LabPassword }
+    else { Write-Host "[ERREUR] Mot de passe requis. Copiez config.example.ps1 en config.ps1" -ForegroundColor Red; exit 1 }
+}
 
 $ErrorActionPreference = "Stop"
 
@@ -119,7 +127,7 @@ param(
     [string]$RODCIP       = "192.168.0.11",
     [int]$PrefixLength    = 24,
     [string]$Gateway      = "192.168.0.1",
-    [string]$SafePassword = "Cim22091956!!??"
+    [string]$SafePassword = "__LAB_PASSWORD__"
 )
 
 $ErrorActionPreference = "Stop"
@@ -176,6 +184,7 @@ Write-Host "`n[OK] DC02 promu en RODC dans $DomainName" -ForegroundColor Green
 Write-Host "La machine va redemarrer automatiquement." -ForegroundColor Yellow
 '@
 
+$rodcScript = $rodcScript.Replace('__LAB_PASSWORD__', $SafePassword)
 Set-Content -Path "$OutputScripts\A2_Install-RODC.ps1" -Value $rodcScript -Encoding UTF8
 Write-Host "  [OK] Script genere : $OutputScripts\A2_Install-RODC.ps1" -ForegroundColor Green
 
@@ -233,7 +242,7 @@ param(
     [int]$PrefixLength    = 24,
     [string]$Gateway      = "192.168.0.1",
     [string]$DC01IP       = "192.168.0.10",
-    [string]$SafePassword = "Cim22091956!!??"
+    [string]$SafePassword = "__LAB_PASSWORD__"
 )
 
 $ErrorActionPreference = "Stop"
@@ -285,6 +294,7 @@ Install-ADDSForest `
 # (Machine reboote ici)
 '@
 
+$partnerScript = $partnerScript.Replace('__LAB_PASSWORD__', $SafePassword)
 Set-Content -Path "$OutputScripts\B2_Install-PartnerForest.ps1" -Value $partnerScript -Encoding UTF8
 Write-Host "  [OK] Script genere : $OutputScripts\B2_Install-PartnerForest.ps1" -ForegroundColor Green
 
@@ -370,7 +380,7 @@ Write-Host "`n[2/5] Creation du trust bidirectionnel avec $PartnerDomain..." -Fo
 $partnerCred = Get-Credential -Message "Credentials Domain Admin de $PartnerDomain (PARTNER\Administrator)"
 
 # Methode netdom (plus robuste que New-ADTrust pour cross-forest)
-netdom trust $PartnerDomain /Domain:lab.local /Add /TwoWay /UserD:$($partnerCred.UserName) /PasswordD:$($partnerCred.GetNetworkCredential().Password) /UserO:Administrator /PasswordO:"Cim22091956!!??"
+netdom trust $PartnerDomain /Domain:lab.local /Add /TwoWay /UserD:$($partnerCred.UserName) /PasswordD:$($partnerCred.GetNetworkCredential().Password) /UserO:Administrator /PasswordO:"__LAB_PASSWORD__"
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "  [OK] Trust bidirectionnel cree" -ForegroundColor Green
@@ -442,6 +452,7 @@ Write-Host "    Collect-RODCConfig.ps1   → P-RODC-RevealGroup, P-RODC-AdminRep
 Write-Host ""
 '@
 
+$trustScript = $trustScript.Replace('__LAB_PASSWORD__', $SafePassword)
 Set-Content -Path "$OutputScripts\B4_Setup-Trust-Vulns.ps1" -Value $trustScript -Encoding UTF8
 Write-Host "  [OK] Script genere : $OutputScripts\B4_Setup-Trust-Vulns.ps1" -ForegroundColor Green
 

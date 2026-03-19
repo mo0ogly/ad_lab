@@ -11,9 +11,16 @@
 
 param(
     [string]$VMName     = "DC01-LAB",
-    [string]$Password   = "Cim22091956!!??",
+    [string]$Password   = "",
     [string]$ScriptsPath = $PSScriptRoot  # Utilise le dossier du script lui-meme
 )
+
+# Charger config si pas de mot de passe fourni
+if (-not $Password) {
+    $configPath = Join-Path $PSScriptRoot "config.ps1"
+    if (Test-Path $configPath) { . $configPath; $Password = $LabPassword }
+    else { Write-Host "[ERREUR] Mot de passe requis. Copiez config.example.ps1 en config.ps1" -ForegroundColor Red; exit 1 }
+}
 
 Write-Host "=== Deploiement automatique dans la VM ===" -ForegroundColor Cyan
 Write-Host "  VM      : $VMName" -ForegroundColor White

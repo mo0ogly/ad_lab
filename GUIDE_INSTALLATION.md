@@ -55,7 +55,7 @@ Internet
 .\01_Create-VM.ps1 -ISOPath "C:\chemin\vers\server2022.iso"
 
 # 2. Installer Windows Server dans la VM (console Hyper-V)
-#    Mot de passe Administrator : Cim22091956!!??
+#    Mot de passe Administrator : (voir config.ps1)
 
 # 3. Sur l'HOTE — deployer automatiquement AD + services + population
 .\run_in_vm.ps1
@@ -82,7 +82,7 @@ Internet
 **Apres execution :**
 1. Console VM → appuyer sur une touche pour booter sur le DVD
 2. Installer Windows Server 2022 **Desktop Experience**
-3. Mot de passe Administrator : `Cim22091956!!??`
+3. Mot de passe Administrator : `(voir config.ps1)`
 
 ---
 
@@ -204,10 +204,10 @@ Ce script cree 2 VMs et genere 4 scripts dans `C:\HyperV\setup-scripts\` :
 
 | Compte | Mot de passe | Usage |
 |--------|-------------|-------|
-| `Administrator` | `Cim22091956!!??` | Admin local / DSRM |
-| `LAB\Administrator` | `Cim22091956!!??` | Admin domaine |
-| Tous les users | `Cim22091956!!??` | Mot de passe par defaut |
-| Comptes `adm.*` | `Adm1n!Cim22091956!!??` | Comptes admin |
+| `Administrator` | `(voir config.ps1)` | Admin local / DSRM |
+| `LAB\Administrator` | `(voir config.ps1)` | Admin domaine |
+| Tous les users | `(voir config.ps1)` | Mot de passe par defaut |
+| Comptes `adm.*` | `Adm1n!(voir config.ps1)` | Comptes admin |
 | Comptes faibles | `Password1` | Services legacy, partenaires, admins vulns |
 
 ---

@@ -18,10 +18,17 @@ param(
     [string]$ServerIP       = "192.168.0.10",
     [int]$PrefixLength      = 24,
     [string]$Gateway        = "192.168.0.1",
-    [string]$SafePassword   = "Cim22091956!!??",
+    [string]$SafePassword   = "",
     [string]$DHCPScopeStart = "192.168.0.100",
     [string]$DHCPScopeEnd   = "192.168.0.200"
 )
+
+# Charger config si pas de mot de passe fourni
+if (-not $SafePassword) {
+    $configPath = Join-Path $PSScriptRoot "config.ps1"
+    if (Test-Path $configPath) { . $configPath; $SafePassword = $LabPassword }
+    else { Write-Host "[ERREUR] Mot de passe requis. Copiez config.example.ps1 en config.ps1" -ForegroundColor Red; exit 1 }
+}
 
 $ErrorActionPreference = "Stop"
 

@@ -8,9 +8,16 @@
 param(
     [string]$DomainDN = "DC=lab,DC=local",
     [string]$DomainName = "lab.local",
-    [string]$DefaultPassword = "Cim22091956!!??",
+    [string]$DefaultPassword = "",
     [string]$WeakPassword = "Password1"
 )
+
+# Charger config si pas de mot de passe fourni
+if (-not $DefaultPassword) {
+    $configPath = Join-Path $PSScriptRoot "..\config.ps1"
+    if (Test-Path $configPath) { . $configPath; $DefaultPassword = $LabPassword }
+    else { Write-Host "[ERREUR] Mot de passe requis. Copiez config.example.ps1 en config.ps1" -ForegroundColor Red; exit 1 }
+}
 
 Write-Host "`n[USERS] Creation des utilisateurs..." -ForegroundColor Yellow
 
