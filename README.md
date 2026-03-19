@@ -133,7 +133,30 @@ Ce script utilise PowerShell Direct pour copier et executer tout dans la VM :
 
 Si PowerShell Direct ne fonctionne pas, transferez les scripts manuellement.
 
-**Methode HTTP** (depuis l'hote) :
+**Methode 1 — Partage SMB** (recommandee) :
+
+```powershell
+# Sur l'hote (PowerShell Admin) — cree le share et copie les fichiers dans la VM
+.\setup_share2.ps1
+```
+
+Le script :
+- Desactive le firewall de la VM
+- Cree un partage `\\192.168.0.10\Share` (Everyone FullAccess)
+- Copie tous les scripts dans `C:\Share\ad_lab\` via PowerShell Direct
+
+Les scripts sont ensuite accessibles :
+- Depuis la VM : `C:\Share\ad_lab\`
+- Depuis l'hote : `\\192.168.0.10\Share\ad_lab\`
+
+```powershell
+# Dans la VM — executer les scripts depuis le share
+C:\Share\ad_lab\02_Install-ADDS.ps1        # relancer apres chaque reboot
+C:\Share\ad_lab\03_Install-Services.ps1
+C:\Share\ad_lab\04_Populate-AD.ps1
+```
+
+**Methode 2 — Serveur HTTP** :
 ```powershell
 # Sur l'hote — demarrer un serveur HTTP temporaire
 python -m http.server 8888 --bind 192.168.0.98 --directory C:\chemin\vers\ad_lab
@@ -335,6 +358,10 @@ ad_lab/
 │   --- Utilitaires ---
 │
 ├── run_in_vm.ps1                      # [HOTE]  Deploiement auto PowerShell Direct
+├── setup_share2.ps1                   # [HOTE]  Cree share SMB + copie scripts dans VM
+├── config.ps1                         # [LOCAL] Mot de passe (gitignored)
+├── config.example.ps1                 # Template pour config.ps1
+├── .gitignore                         # Exclut config.ps1
 ├── diag.ps1                           # [HOTE]  Diagnostic VM
 ├── fix_boot.ps1                       # [HOTE]  Fix boot DVD
 └── rebuild.ps1                        # [HOTE]  Reconstruction complete VM

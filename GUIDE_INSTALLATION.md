@@ -110,7 +110,26 @@ Internet
 .\run_in_vm.ps1
 ```
 
-**Option B — Serveur HTTP** (manuel) :
+**Option B — Partage SMB** (recommandee si PS Direct echoue) :
+```powershell
+# Sur l'HOTE (PowerShell Admin) — cree le share et copie les fichiers
+.\setup_share2.ps1
+```
+
+Le script desactive le firewall de la VM, cree `\\192.168.0.10\Share` (Everyone FullAccess)
+et copie tous les scripts dans `C:\Share\ad_lab\` via PowerShell Direct.
+
+Acces depuis la VM : `C:\Share\ad_lab\`
+Acces depuis l'hote : `\\192.168.0.10\Share\ad_lab\`
+
+```powershell
+# Dans la VM — executer depuis le share
+C:\Share\ad_lab\02_Install-ADDS.ps1
+C:\Share\ad_lab\03_Install-Services.ps1
+C:\Share\ad_lab\04_Populate-AD.ps1
+```
+
+**Option C — Serveur HTTP** (manuel) :
 ```powershell
 # Sur l'HOTE
 python -m http.server 8888 --bind 192.168.0.98 --directory C:\chemin\vers\ad_lab

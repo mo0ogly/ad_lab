@@ -133,7 +133,30 @@ This script uses PowerShell Direct to copy and execute everything inside the VM:
 
 If PowerShell Direct doesn't work, transfer scripts manually.
 
-**HTTP method** (from the host):
+**Method 1 — SMB Share** (recommended):
+
+```powershell
+# On the host (PowerShell Admin) — creates the share and copies files into the VM
+.\setup_share2.ps1
+```
+
+The script:
+- Disables the VM firewall
+- Creates a `\\192.168.0.10\Share` share (Everyone FullAccess)
+- Copies all scripts to `C:\Share\ad_lab\` via PowerShell Direct
+
+Scripts are then accessible:
+- From the VM: `C:\Share\ad_lab\`
+- From the host: `\\192.168.0.10\Share\ad_lab\`
+
+```powershell
+# Inside the VM — run scripts from the share
+C:\Share\ad_lab\02_Install-ADDS.ps1        # re-run after each reboot
+C:\Share\ad_lab\03_Install-Services.ps1
+C:\Share\ad_lab\04_Populate-AD.ps1
+```
+
+**Method 2 — HTTP Server**:
 ```powershell
 # On the host — start a temporary HTTP server
 python -m http.server 8888 --bind 192.168.0.98 --directory C:\path\to\ad_lab
@@ -336,6 +359,10 @@ ad_lab/
 │   --- Utilities ---
 │
 ├── run_in_vm.ps1                      # [HOST] Automated deployment via PS Direct
+├── setup_share2.ps1                   # [HOST] Create SMB share + copy scripts to VM
+├── config.ps1                         # [LOCAL] Password (gitignored)
+├── config.example.ps1                 # Template for config.ps1
+├── .gitignore                         # Excludes config.ps1
 ├── diag.ps1                           # [HOST] VM diagnostics
 ├── fix_boot.ps1                       # [HOST] DVD boot fix
 └── rebuild.ps1                        # [HOST] Full VM rebuild
