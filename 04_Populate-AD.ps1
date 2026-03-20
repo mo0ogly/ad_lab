@@ -66,7 +66,8 @@ $steps = @(
     @{File="04j_Set-DomainConfig.ps1";      Desc="Config domaine dangereuses";        Params=@{DomainDN=$DomainDN; DomainName=$DomainName; WeakPassword=$WeakPassword}},
     @{File="04k_Set-PasswordPolicies.ps1";  Desc="Fine-Grained Password Policies";   Params=@{DomainDN=$DomainDN}},
     @{File="04l_Set-ADCS-Vulns.ps1";        Desc="Vulnerabilites ADCS";              Params=@{DomainDN=$DomainDN}},
-    @{File="04m_Set-CollectorTargets.ps1";   Desc="Objets pour collecteurs LIA-Scan"; Params=@{DomainDN=$DomainDN; DomainName=$DomainName; WeakPassword=$WeakPassword}}
+    @{File="04m_Set-CollectorTargets.ps1";   Desc="Objets pour collecteurs LIA-Scan"; Params=@{DomainDN=$DomainDN; DomainName=$DomainName; WeakPassword=$WeakPassword}},
+    @{File="04n_Set-IIS-Vulns.ps1";          Desc="Vulnerabilites IIS (15 vulns)";     Params=@{DomainName=$DomainName}}
 )
 
 $total = $steps.Count

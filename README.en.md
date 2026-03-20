@@ -36,7 +36,7 @@ Built to test and validate AD security audit tools:
 | **80+ users** | 12 departments, admin accounts, service accounts, partners |
 | **40+ groups** | Security, distribution, ACL, nested BloodHound cascades |
 | **30+ GPOs** | 11 legitimate + 20 vulnerable |
-| **90+ misconfigurations** | Covering **42 security collectors** |
+| **90+ misconfigurations** | Covering **60 security collectors** |
 | **15+ services** | ADCS (PKI), IIS, DFS, NPS, ADFS, RDS, DHCP, DNS, SMTP... |
 | **Deployment** | Automated via PowerShell Direct — ~45 min |
 
@@ -53,6 +53,8 @@ Built to test and validate AD security audit tools:
 | **CPU** | 4 cores | 8 cores |
 | **ISO** | Windows Server 2022 Eval | [Download](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022) |
 | **PowerShell** | 5.1+ | 5.1+ |
+| **LAPS** | Optional | [Download](https://www.microsoft.com/en-us/download/details.aspx?id=46899) |
+| **Collectors** | `E:\ad.zip` | 60 LIA-Scan scripts |
 
 ---
 
@@ -75,6 +77,35 @@ Built to test and validate AD security audit tools:
 ```
 
 The lab is ready. DC01 contains a fully populated AD with 90+ misconfigurations.
+
+### Deploy and Run Collectors
+
+```powershell
+# Copies the 60 collectors from E:\ad.zip to C:\Share\collectors\ on the VM
+# Automatically applies fixes (duplicate keys, filters, etc.)
+.\deploy_collectors.ps1
+
+# Interactive menu — choose execution mode:
+#   1. FULL     — all 60 collectors (production, needs joined machines)
+#   2. AD ONLY  — excludes remote scans (recommended for lab)
+#   3. QUICK    — AD only + excludes heavy collectors (test)
+.\run_collectors.ps1
+```
+
+The `deploy_collectors.ps1` script extracts the zip, applies fixes
+(`fix_collectors.ps1`), then sends each `.ps1` into the VM via PowerShell Direct.
+
+The `run_collectors.ps1` script displays a menu with 3 modes:
+- **Mode 1 — FULL**: all 60 collectors. Requires domain-joined machines
+  reachable via WMI/RPC (production use).
+- **Mode 2 — AD ONLY** (recommended for lab): excludes the 9 collectors
+  that scan remote machines (Antivirus, LocalAdmins, Spooler, Registry...).
+- **Mode 3 — QUICK**: mode 2 + excludes heavy collectors (ADCompleteTaxonomy, ADAcls).
+
+Results are exported to `C:\Share\collectors_results.csv`.
+
+> **Note**: LAPS must be installed on the DC for `Collect-ADLapsBitLocker`
+> to work. Without LAPS, the AD schema lacks the `ms-Mcs-AdmPwdExpirationTime` attribute.
 
 ### Extended Infrastructure (RODC + Trust — 3 VMs)
 
@@ -264,7 +295,8 @@ intentionally misconfigured: SID Filtering OFF, TGT Delegation ON, RC4 only).
 
 ## Collector Coverage
 
-**42 out of 42 collectors covered** — every collector will find at least one misconfiguration.
+**60 collectors** — every AD collector will find at least one misconfiguration.
+The 9 remote scan collectors (WMI/Registry) require domain-joined machines.
 
 <details>
 <summary>Full table: collector → vulnerability → source script</summary>
@@ -359,12 +391,16 @@ ad_lab/
 │   --- Utilities ---
 │
 ├── run_in_vm.ps1                      # [HOST] Automated deployment via PS Direct
+├── deploy_collectors.ps1              # [HOST] Copy + fix collectors into the VM
+├── run_collectors.ps1                 # [HOST] Run all collectors + summary
+├── fix_collectors.ps1                 # [HOST] Collector bug fixes
 ├── setup_share2.ps1                   # [HOST] Create SMB share + copy scripts to VM
 ├── config.ps1                         # [LOCAL] Password (gitignored)
 ├── config.example.ps1                 # Template for config.ps1
 ├── .gitignore                         # Excludes config.ps1
 ├── diag.ps1                           # [HOST] VM diagnostics
 ├── fix_boot.ps1                       # [HOST] DVD boot fix
+├── fix_missing_objects.ps1            # [HOST] Create missing AD objects
 └── rebuild.ps1                        # [HOST] Full VM rebuild
 ```
 

@@ -14,7 +14,8 @@ Lab AD volontairement vulnerable pour tester les outils d'audit de securite
 | **Passerelle** | `192.168.0.1` |
 | **DHCP Scope** | `192.168.0.100` - `192.168.0.200` |
 | **OS** | Windows Server 2022 Evaluation |
-| **Anomalies** | 90+ vulnerabilites couvrant 42 collecteurs |
+| **Anomalies** | 90+ vulnerabilites couvrant 60 collecteurs |
+| **LAPS** | Optionnel — necessaire pour `Collect-ADLapsBitLocker` |
 
 ---
 
@@ -219,6 +220,59 @@ Ce script cree 2 VMs et genere 4 scripts dans `C:\HyperV\setup-scripts\` :
 
 ---
 
+### Etape 6 — Deployer et executer les collecteurs (sur l'hote)
+
+Une fois l'AD peuple et les VMs configurees, deployer les 60 collecteurs LIA-Scan :
+
+```powershell
+# 6a. Copier les 60 collecteurs dans la VM + appliquer les correctifs
+.\deploy_collectors.ps1
+
+# 6b. Executer les collecteurs avec le menu interactif
+.\run_collectors.ps1
+```
+
+**Menu de `run_collectors.ps1`** :
+
+| Mode | Description | Collecteurs |
+|------|-------------|-------------|
+| **1. COMPLET** | Tous les collecteurs (production) | 60 |
+| **2. AD UNIQUEMENT** | Exclut les scans remote — **recommande pour le lab** | ~51 |
+| **3. RAPIDE** | AD seul + exclut les lourds (test rapide) | ~49 |
+
+**Collecteurs exclus en mode 2 (AD UNIQUEMENT)** :
+
+| Collecteur exclu | Raison |
+|-----------------|--------|
+| `Collect-ADAntivirus` | WMI Win32_Service sur chaque PC |
+| `Collect-ADLocalAdmins` | WMI groupes locaux sur chaque PC |
+| `Collect-ADSpooler` | Test PrintSpooler sur chaque PC |
+| `Collect-ADRemoteSolutions` | Scan RDP/VNC/TeamViewer |
+| `Collect-ADUptimeAndVersion` | WMI OS version sur chaque PC |
+| `Collect-DCRegistry` | Registry remote sur DCs |
+| `Collect-DCRegistryKey` | Registry remote sur DCs |
+| `Collect-DCTLSConfig` | Registry TLS sur DCs |
+| `Collect-DCHardening` | Registry hardening sur DCs |
+
+**Collecteurs exclus en plus en mode 3 (RAPIDE)** :
+
+| Collecteur exclu | Raison |
+|-----------------|--------|
+| `Collect-ADCompleteTaxonomy` | Dump schema complet — 10+ min |
+| `Collect-ADAcls` | ACLs tous objets — 5+ min |
+
+| Script | Ou | Role |
+|--------|----|------|
+| `deploy_collectors.ps1` | Hote | Extrait `E:\ad.zip`, corrige les bugs, copie dans la VM |
+| `fix_collectors.ps1` | Hote | Correctifs des bugs collecteurs (appele par deploy) |
+| `run_collectors.ps1` | Hote | Menu interactif + execution + resume des anomalies |
+
+> **Note LAPS** : Pour que `Collect-ADLapsBitLocker` fonctionne, LAPS doit etre
+> installe sur le DC. Sans LAPS, l'attribut `ms-Mcs-AdmPwdExpirationTime` n'existe pas
+> dans le schema. [Telecharger LAPS](https://www.microsoft.com/en-us/download/details.aspx?id=46899)
+
+---
+
 ## Credentials
 
 | Compte | Mot de passe | Usage |
@@ -231,7 +285,7 @@ Ce script cree 2 VMs et genere 4 scripts dans `C:\HyperV\setup-scripts\` :
 
 ---
 
-## Couverture des collecteurs (42/42)
+## Couverture des collecteurs (60)
 
 | Collecteur | Anomalie | Script source |
 |---|---|---|
@@ -283,6 +337,10 @@ Ce script cree 2 VMs et genere 4 scripts dans `C:\HyperV\setup-scripts\` :
 
 | Script | Ou | Usage |
 |--------|----|-------|
+| `deploy_collectors.ps1` | Hote | Copie + corrige les collecteurs dans la VM |
+| `fix_collectors.ps1` | Hote | Correctifs des bugs collecteurs |
+| `fix_missing_objects.ps1` | Hote | Cree les objets AD manquants (filet de securite) |
+| `run_collectors.ps1` | Hote | Menu interactif — 3 modes d'execution + resume |
 | `diag.ps1` | Hote | Diagnostic VM (ISO, DVD, boot, firmware, reseau) |
 | `fix_boot.ps1` | Hote | Corrige l'ordre de boot (DVD en premier) |
 | `rebuild.ps1` | Hote | Reconstruction complete de la VM DC01 |
@@ -352,9 +410,13 @@ ad_lab/
 │   └── 04m_Set-CollectorTargets.ps1 # Objets pour collecteurs LIA-Scan
 │
 ├── run_in_vm.ps1                   # [HOTE] Deploiement auto (PowerShell Direct)
-├── diag.ps1                        # [HOTE] Diagnostic VM
-├── fix_boot.ps1                    # [HOTE] Fix boot DVD
-└── rebuild.ps1                     # [HOTE] Rebuild complet VM
+├── deploy_collectors.ps1            # [HOTE] Copie + corrige les collecteurs dans la VM
+├── run_collectors.ps1               # [HOTE] Execute tous les collecteurs + resume
+├── fix_collectors.ps1               # [HOTE] Correctifs des bugs collecteurs
+├── fix_missing_objects.ps1          # [HOTE] Cree les objets AD manquants
+├── diag.ps1                         # [HOTE] Diagnostic VM
+├── fix_boot.ps1                     # [HOTE] Fix boot DVD
+└── rebuild.ps1                      # [HOTE] Rebuild complet VM
 ```
 
 ## Installation Claude Code dans la VM

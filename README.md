@@ -36,7 +36,7 @@ Concu pour tester et valider les outils d'audit de securite AD :
 | **80+ utilisateurs** | 12 departements, comptes admin, service, partenaires |
 | **40+ groupes** | Securite, distribution, ACL, nested cascades BloodHound |
 | **30+ GPOs** | 11 normales + 20 vulnerables |
-| **90+ anomalies** | Couvrant **42 collecteurs** de securite |
+| **90+ anomalies** | Couvrant **60 collecteurs** de securite |
 | **15+ services** | ADCS (PKI), IIS, DFS, NPS, ADFS, RDS, DHCP, DNS, SMTP... |
 | **Deploiement** | Automatise via PowerShell Direct — ~45 min |
 
@@ -53,6 +53,8 @@ Concu pour tester et valider les outils d'audit de securite AD :
 | **CPU** | 4 coeurs | 8 coeurs |
 | **ISO** | Windows Server 2022 Eval | [Telecharger](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022) |
 | **PowerShell** | 5.1+ | 5.1+ |
+| **LAPS** | Optionnel | [Telecharger](https://www.microsoft.com/en-us/download/details.aspx?id=46899) |
+| **Collecteurs** | `E:\ad.zip` | 60 scripts LIA-Scan |
 
 ---
 
@@ -75,6 +77,35 @@ Concu pour tester et valider les outils d'audit de securite AD :
 ```
 
 Le lab est operationnel. DC01 contient un AD complet avec 90+ anomalies.
+
+### Deployer et executer les collecteurs
+
+```powershell
+# Copie les 60 collecteurs de E:\ad.zip vers C:\Share\collectors\ sur la VM
+# Applique automatiquement les correctifs (cles dupliquees, filtres, etc.)
+.\deploy_collectors.ps1
+
+# Menu interactif — choisir le mode d'execution :
+#   1. COMPLET    — 60 collecteurs (production, necessite des machines jointes)
+#   2. AD SEUL    — exclut scans remote (recommande pour le lab)
+#   3. RAPIDE     — AD seul + exclut les collecteurs lourds (test)
+.\run_collectors.ps1
+```
+
+Le script `deploy_collectors.ps1` extrait le zip, applique les corrections
+(`fix_collectors.ps1`), puis envoie chaque `.ps1` dans la VM via PowerShell Direct.
+
+Le script `run_collectors.ps1` affiche un menu avec 3 modes :
+- **Mode 1 — COMPLET** : tous les 60 collecteurs. Necessite des machines jointes
+  au domaine accessibles en WMI/RPC (production).
+- **Mode 2 — AD UNIQUEMENT** (recommande pour le lab) : exclut les 9 collecteurs
+  qui scannent des machines distantes (Antivirus, LocalAdmins, Spooler, Registry...).
+- **Mode 3 — RAPIDE** : mode 2 + exclut les collecteurs lourds (ADCompleteTaxonomy, ADAcls).
+
+Les resultats sont exportes dans `C:\Share\collectors_results.csv`.
+
+> **Note** : LAPS doit etre installe sur le DC pour que `Collect-ADLapsBitLocker`
+> fonctionne. Sans LAPS, le schema AD ne contient pas l'attribut `ms-Mcs-AdmPwdExpirationTime`.
 
 ### Infrastructure avancee (RODC + Trust — 3 VMs)
 
@@ -264,7 +295,8 @@ volontairement misconfigure : SID Filtering OFF, TGT Delegation ON, RC4 only).
 
 ## Couverture des collecteurs
 
-**42 collecteurs sur 42 couverts** — chaque collecteur trouvera au moins une anomalie.
+**60 collecteurs** — chaque collecteur AD trouvera au moins une anomalie.
+Les 9 collecteurs de scan remote (WMI/Registry) necessitent des machines jointes au domaine.
 
 <details>
 <summary>Tableau complet collecteur → anomalie → script source</summary>
@@ -358,12 +390,16 @@ ad_lab/
 │   --- Utilitaires ---
 │
 ├── run_in_vm.ps1                      # [HOTE]  Deploiement auto PowerShell Direct
+├── deploy_collectors.ps1              # [HOTE]  Copie + corrige les collecteurs dans la VM
+├── run_collectors.ps1                 # [HOTE]  Execute tous les collecteurs + resume
+├── fix_collectors.ps1                 # [HOTE]  Correctifs des bugs collecteurs
 ├── setup_share2.ps1                   # [HOTE]  Cree share SMB + copie scripts dans VM
 ├── config.ps1                         # [LOCAL] Mot de passe (gitignored)
 ├── config.example.ps1                 # Template pour config.ps1
 ├── .gitignore                         # Exclut config.ps1
 ├── diag.ps1                           # [HOTE]  Diagnostic VM
 ├── fix_boot.ps1                       # [HOTE]  Fix boot DVD
+├── fix_missing_objects.ps1            # [HOTE]  Cree les objets AD manquants
 └── rebuild.ps1                        # [HOTE]  Reconstruction complete VM
 ```
 

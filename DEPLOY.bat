@@ -23,7 +23,7 @@ echo.
 echo   [ETAPE 4] 04_Populate-AD.ps1
 echo     ^> Execute DANS la VM
 echo     ^> Cree 80+ users, groupes, OUs, GPOs, comptes admin
-echo     ^> Inclut 04a-04m : 85+ anomalies pour LIA-Scan
+echo     ^> Inclut 04a-04m : 90+ anomalies pour LIA-Scan
 echo.
 echo   === INFRASTRUCTURE AVANCEE (RODC + Trust) ===
 echo.
@@ -49,11 +49,38 @@ echo     ^> Execute SUR DC01
 echo     ^> Trust bidirectionnel + anomalies (SID filtering OFF,
 echo       TGT delegation, RC4 only, RODC PRP permissive)
 echo.
+echo   === COLLECTEURS LIA-SCAN ===
+echo.
+echo   [ETAPE 6] Deploiement des collecteurs
+echo     ^> Sur ta MACHINE HOTE (PowerShell Admin) :
+echo.
+echo     6a. .\deploy_collectors.ps1
+echo         ^> Extrait E:\ad.zip, corrige les bugs connus
+echo         ^> Copie 60 collecteurs dans C:\Share\collectors sur la VM
+echo.
+echo     6b. .\run_collectors.ps1
+echo         ^> Menu interactif avec 3 modes :
+echo.
+echo         Mode 1 - COMPLET (production)
+echo           Tous les 60 collecteurs. Necessite des machines
+echo           jointes au domaine accessibles en WMI.
+echo.
+echo         Mode 2 - AD UNIQUEMENT (recommande pour le lab)
+echo           Exclut les scans remote (Antivirus, LocalAdmins,
+echo           Spooler, RemoteSolutions, Uptime, Registry DCs...).
+echo           Ideal quand seul le DC existe.
+echo.
+echo         Mode 3 - RAPIDE (test)
+echo           Mode 2 + exclut les collecteurs lourds
+echo           (ADCompleteTaxonomy, ADAcls).
+echo.
 echo ================================================
-echo   COLLECTEURS COUVERTS : 42/42
-echo   ANOMALIES TOTALES    : 90+
+echo   COLLECTEURS : 60 total (LIA-Scan engine)
+echo   ANOMALIES   : 90+
+echo   MODES       : Complet / AD seul / Rapide
 echo ================================================
 echo.
+echo   Mot de passe: dans config.ps1 (non versionne)
 echo   Pour commencer, ouvre PowerShell en Admin et lance:
 echo   .\01_Create-VM.ps1
 echo.
