@@ -1,0 +1,300 @@
+rule_id|current_script|pattern|objectclass|proposed_script|confidence
+A-A-RODCAllowedGroup|Collect-ADCompleteTaxonomy.ps1|*_DATA_Groups.xml|group|NEED_NEW_COLLECTOR|LOW
+A-A-AdminSDHolder-Level1|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_ACL_*.xml|delegation|Collect-Delegations.ps1|HIGH
+A-A-AdminSDHolder-Level2|Collect-ADCompleteTaxonomy.ps1|*_ACL_*.xml|delegation|Collect-Delegations.ps1|HIGH
+A-A-ADMINSDHOLDER-MISSING|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-A-AnonymousAuthorizedGPO|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_policy|Collect-GPOSettings.ps1|MEDIUM
+A-A-BackupMetadata|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_metadata|UNKNOWN|LOW
+A-A-DC-Spooler|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Domain controllers.xml|domaincontroller|Collect-ADUptimeAndVersion.ps1|MEDIUM
+A-A-DC-WebClient|Collect-ADCompleteTaxonomy.ps1|*_DATA_Domain controllers.xml|domain_controller|Collect-ADUptimeAndVersion.ps1|MEDIUM
+A-A-DnsZoneAUCreateChild|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_DNS zones*.xml|dns_zone|Collect-DNSConfig.ps1|HIGH
+A-A-DnsZoneTransfert|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_DNS zones*.xml|dns_zone|Collect-DNSConfig.ps1|HIGH
+A-A-DsHeuristics1|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain|NEED_NEW_COLLECTOR|LOW
+A-A-DsHeuristics2|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain|NEED_NEW_COLLECTOR|LOW
+A-A-DsHeuristics4|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain|NEED_NEW_COLLECTOR|LOW
+A-A-DsHeuristicsAnonNSPI|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-A-DsHeuristicsAnonymous|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-A-DsHeuristicsDoNotVerifyUniqueness|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_aggregate|UNKNOWN|LOW
+A-A-DsHeuristicsLDAPSecurity|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-A-FunctionalLevel-2008R2|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|forest_functional_level|NEED_NEW_COLLECTOR|LOW
+A-A-FunctionalLevel-2012R2|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|forest_functional_level|NEED_NEW_COLLECTOR|LOW
+A-A-FunctionalLevel-2016|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|forest_functional_level|NEED_NEW_COLLECTOR|LOW
+A-A-HardenedPaths-DC-Integrity|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_hardened_path|Collect-GPOSettings.ps1|MEDIUM
+A-A-HardenedPaths-DC-MutualAuth|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_hardened_path}|Collect-GPOSettings.ps1|MEDIUM
+A-P-RODCNeverReveal|Collect-ADCompleteTaxonomy.ps1|*_DATA_Domain controllers.xml|domain_controller|Collect-ADUptimeAndVersion.ps1|MEDIUM
+A-A-PermissionsDC-AdminForest-Delegated|Collect-ADCompleteTaxonomy.ps1|*_DATA_Domain controllers.xml|dc_delegation|UNKNOWN|LOW
+A-A-PermissionsDC-AzureADConnect|Collect-ADCompleteTaxonomy.ps1|*_DATA_Domain controllers.xml|dc_delegation|UNKNOWN|LOW
+A-A-PreWin2000AuthenticatedUsers|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-A-PrimaryGroupID-Computers|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-A-PrimaryGroupID-LT1000|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml||UNKNOWN|LOW
+A-A-PrimaryGroupID-Users|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-P-RODCRevealOnDemand|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|rodc_reveal_config|UNKNOWN|LOW
+A-A-TrustExternal|Collect-ADCompleteTaxonomy.ps1|*_DATA_trustedDomain.xml|trustedDomain|Collect-Trusts.ps1|HIGH
+A-P-DnsAdmins|Collect-ADCompleteTaxonomy.ps1|*_DATA_Groups.xml|dnsadmins_membership|UNKNOWN|LOW
+A-P-DsHeuristicsAdminSDExMaskModified|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|ds_heuristics|Collect-DsHeuristics.ps1|HIGH
+A-P-DsHeuristicsDoListObject|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|ds_heuristics|Collect-DsHeuristics.ps1|HIGH
+P-A-ServiceDomainAdmin|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-P-TrustedCredManAccessPrivilege|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_user_rights|Collect-GPOUserRights.ps1|HIGH
+S-S-ADRegistrationSchema|Collect-ADCompleteTaxonomy.ps1|SCHEMA_DATA_Classes.xml|schema_class_vulnerable|NEED_NEW_COLLECTOR|LOW
+A-S-DC-Inactive|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-DC-NotUpdated|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+S-DCMissingServerTrust|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-Duplicate|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-S-Duplicate-Computer|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-Duplicate-User|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-JavaSchema|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-S-OBSOLETE-2003|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-OBSOLETE-DC-2008|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-PrimaryGroup-User|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+S-RODCInconsistentUAC|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-T-FileDeployedOutOfDomain|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_file_deployed|Collect-GPOSettings.ps1|MEDIUM
+A-T-ScriptOutOfDomain|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml||UNKNOWN|LOW
+S-T-SIDHistorySameDomain|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml||UNKNOWN|LOW
+S-T-SIDHistoryUnknownDomain|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml||UNKNOWN|LOW
+A-T-TrustAES|Collect-ADCompleteTaxonomy.ps1|*_DATA_trustedDomain.xml|trust|Collect-Trusts.ps1|HIGH
+A-CGOV-AdminAccountSeparation|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-CGOV-BackupDCGovernance|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Domain controllers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-CGOV-DelegationGovernance|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Organizational units.xml|organizationalUnit|NEED_NEW_COLLECTOR|LOW
+A-CGOV-gMSAGovernance|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_ManagedServiceAccount.xml|msDS-GroupManagedServiceAccount|UNKNOWN|LOW
+A-CGOV-GPOGovernance|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|groupPolicyContainer|Collect-GPOSettings.ps1|MEDIUM
+A-CGOV-IncidentResponseReadiness|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Groups.xml|group|NEED_NEW_COLLECTOR|LOW
+A-CGOV-ITILChangeManagement|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_*.xml|groupPolicyContainer|Collect-GPOSettings.ps1|MEDIUM
+A-CGOV-NIS2-RBAC|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Groups.xml|group|NEED_NEW_COLLECTOR|LOW
+A-CGOV-NIS2DataProtection|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-CGOV-OUStructureGovernance|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_OrganizationalUnit.xml|organizationalUnit|NEED_NEW_COLLECTOR|LOW
+A-CGOV-PasswordPolicyGovernance|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_PasswordSettingsContainer.xml|msDS-PasswordSettings|UNKNOWN|LOW
+A-CGOV-PrivilegedGroupSize|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Groups.xml|group|NEED_NEW_COLLECTOR|LOW
+A-CGOV-ServiceAccountNaming|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-CGOV-ServiceRecoveryProcedure|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_DomainController.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-CGOV-StaleAccountGovernance|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-CGOV-TrustGovernance|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_trustedDomain.xml|trustedDomain|Collect-Trusts.ps1|HIGH
+A-HEAL-ADRecycleBin|scripts/collect/active-directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Forest.xml|crossRefContainer|UNKNOWN|LOW
+A-HEAL-BackupValidation|Collect-ADCompleteTaxonomy.ps1|*_DATA_Partition_*.xml|crossRefContainer|UNKNOWN|LOW
+A-HEAL-DCCertificateExpiry|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-HEAL-DCOSSupport|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-HEAL-DFSRHealth|Collect-ADCompleteTaxonomy.ps1|*_DATA_*.xml|msDFSR-Member|UNKNOWN|LOW
+A-HEAL-FSMORoleHealth|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-HEAL-LoggingInfraHealth|Collect-ADCompleteTaxonomy.ps1|*_DATA_*.xml|serviceConnectionPoint|UNKNOWN|LOW
+A-HEAL-ReplicationHealth|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_nTDSConnection.xml|nTDSConnection|Collect-ADReplication.ps1|MEDIUM
+A-HEAL-TimeSynchronization|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-HEAL-TombstoneLifetime|Collect-ADCompleteTaxonomy.ps1|*_DATA_Directory Service.xml|nTDSService|UNKNOWN|LOW
+A-HEAL-TrustHealth|Collect-ADCompleteTaxonomy.ps1|*_DATA_trustedDomain.xml|trustedDomain|Collect-Trusts.ps1|HIGH
+A-A-SMB2SignatureNotEnabled|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-A-SMB2SignatureNotRequired|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-WIN-Audit-AuthenticationPolicyChange-Core|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|advanced_audit_policy|Collect-GPOAuditSettings.ps1|MEDIUM
+A-WIN-Audit-DPAPIActivity-Core|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|advanced_audit_policy|Collect-GPOAuditSettings.ps1|MEDIUM
+A-WIN-LSA-ForceAuditSubcategoryOverride|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|registry_value|Collect-GPOSettings.ps1|MEDIUM
+A-S-SMB-v1|active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-WSUS-HTTP|active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_wsus|Collect-GPOSettings.ps1|MEDIUM
+A-S-WSUS-NoPinning|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_wsus|Collect-GPOSettings.ps1|MEDIUM
+A-S-WSUS-UserProxy|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_wsus|Collect-GPOSettings.ps1|MEDIUM
+A-A-NTFRSOnSysvol|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain|NEED_NEW_COLLECTOR|LOW
+A-A-AuditDC|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_audit_policy|Collect-GPOAuditSettings.ps1|MEDIUM
+A-A-BadSuccessor|Collect-ADCompleteTaxonomy.ps1|*_ACL_*.xml|delegation|Collect-Delegations.ps1|HIGH
+A-A-CertEnrollCB|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Enrollment Services.xml|certificate_enrollment|Collect-ADCS.ps1|MEDIUM
+A-A-CertEnrollHttp|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Enrollment Services.xml|certificate_enrollment|Collect-ADCS.ps1|MEDIUM
+A-A-CertMD2Intermediate|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate|Collect-ADCS.ps1|MEDIUM
+A-A-CertMD2Root|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate|Collect-ADCS.ps1|MEDIUM
+A-A-CertMD4Root|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate|Collect-ADCS.ps1|MEDIUM
+A-A-CertMD5Root|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate|Collect-ADCS.ps1|MEDIUM
+A-A-CertSHA0Intermediate|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate|Collect-ADCS.ps1|MEDIUM
+A-A-CertSHA0Root|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate|Collect-ADCS.ps1|MEDIUM
+A-A-CertSHA1Intermediate|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate|Collect-ADCS.ps1|MEDIUM
+A-A-CertSHA1Root|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate|Collect-ADCS.ps1|MEDIUM
+A-A-CertTempAgent|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Templates.xml|certificate_template|Collect-ADCS.ps1|MEDIUM
+A-A-CertTempAnyone|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Templates.xml|certificate_template|Collect-ADCS.ps1|MEDIUM
+A-A-CertTempAnyPurpose|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Templates.xml|pKICertificateTemplate|Collect-ADCS.ps1|MEDIUM
+A-A-CertTempCustomSubject|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Templates.xml|certificate_template|Collect-ADCS.ps1|MEDIUM
+A-A-CertTempNoSecurity|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Templates.xml|certificate_template|Collect-ADCS.ps1|MEDIUM
+A-A-CertWeakDSA|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate|Collect-ADCS.ps1|MEDIUM
+A-A-CertWeakRSA|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate|Collect-ADCS.ps1|MEDIUM
+A-A-CertWeakRSA2|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate|Collect-ADCS.ps1|MEDIUM
+A-A-CertWeakRSAComponent|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate|Collect-ADCS.ps1|MEDIUM
+A-A-DCCoerce|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-A-DCLdapsChannelBinding|Collect-ADCompleteTaxonomy.ps1|*_DATA_Domain controllers.xml|domain_controller|Collect-ADUptimeAndVersion.ps1|MEDIUM
+A-A-DCLdapSign|Collect-ADCompleteTaxonomy.ps1|*_DATA_Domain controllers.xml|domain_controller|Collect-ADUptimeAndVersion.ps1|MEDIUM
+A-A-DCLdapsProtocol|Collect-ADCompleteTaxonomy.ps1|*_DATA_Domain controllers.xml|domain_controller|Collect-ADUptimeAndVersion.ps1|MEDIUM
+A-DCRefuseComputerPwdChange|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_lsa_policy|Collect-GPOSettings.ps1|MEDIUM
+A-A-GPOCredentialDelegation|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|groupPolicyObject|Collect-GPOSettings.ps1|MEDIUM
+A-A-GPONoDCFilter|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_link|Collect-GPOSettings.ps1|MEDIUM
+A-A-GUEST|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-A-HardenedPaths-GPO-Disabled|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_hardened_path}|Collect-GPOSettings.ps1|MEDIUM
+A-A-HardenedPaths-NETLOGON-Integrity|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_hardened_path}|Collect-GPOSettings.ps1|MEDIUM
+A-A-HardenedPaths-NETLOGON-Missing|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain}|UNKNOWN|LOW
+A-A-HardenedPaths-NETLOGON-MutualAuth|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_hardened_path}|Collect-GPOSettings.ps1|MEDIUM
+A-A-HardenedPaths-Privacy-NotSet|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_hardened_path}|Collect-GPOSettings.ps1|MEDIUM
+A-A-HardenedPaths-SYSVOL-Integrity|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_hardened_path|Collect-GPOSettings.ps1|MEDIUM
+A-A-HardenedPaths-SYSVOL-Missing|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain}|UNKNOWN|LOW
+A-A-HardenedPaths-SYSVOL-MutualAuth|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_hardened_path|Collect-GPOSettings.ps1|MEDIUM
+A-A-InactiveServers|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-A-KerberosEncryption|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-A-Krbtgt|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-A-LAPS-Joined-Computers|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-A-LAPS-Not-Installed|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain|NEED_NEW_COLLECTOR|LOW
+A-A-LDAPSigningDisabled|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_policy|Collect-GPOSettings.ps1|MEDIUM
+A-A-LimitBlankPasswordUse|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_lsa_policy|Collect-GPOSettings.ps1|MEDIUM
+A-A-LMHash|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_lsa_policy|Collect-GPOSettings.ps1|MEDIUM
+A-A-LMHashAuthorized|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_lsa_policy|Collect-GPOSettings.ps1|MEDIUM
+A-A-MachineAccountQuota|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domainDNS|NEED_NEW_COLLECTOR|LOW
+A-A-MD2IntermediateCert|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate}|Collect-ADCS.ps1|MEDIUM
+A-A-MD2RootCert|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate}|Collect-ADCS.ps1|MEDIUM
+A-A-MD4IntermediateCert|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml||UNKNOWN|LOW
+A-A-MD4RootCert|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate}|Collect-ADCS.ps1|MEDIUM
+A-A-MD5IntermediateCert|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml||UNKNOWN|LOW
+A-A-MD5RootCert|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate|Collect-ADCS.ps1|MEDIUM
+A-A-MembershipEveryone|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_local_membership|Collect-GPOSettings.ps1|MEDIUM
+A-A-MinPasswordLen|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_lsa_policy|Collect-GPOSettings.ps1|MEDIUM
+A-MinPwdLen|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_lsa_policy|Collect-GPOSettings.ps1|MEDIUM
+A-NoGPOLLMNR|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_lsa_policy|Collect-GPOSettings.ps1|MEDIUM
+A-NoNetSessionHardening|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_lsa_policy|Collect-GPOSettings.ps1|MEDIUM
+A-A-NoServicePolicy|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-A-NotEnoughDC|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-A-PasswordChange-InactiveDC|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-A-PasswordChange-PrivilegedAccounts|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-A-PreWin2000Anonymous|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain|NEED_NEW_COLLECTOR|LOW
+A-A-PwdGPO|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpp_password|Collect-GPPPasswords.ps1|HIGH
+A-A-ReversiblePassword|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-A-ReversiblePwd|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_password_policy|Collect-GPOSettings.ps1|MEDIUM
+A-A-RootDseAnonBinding|Collect-ADCompleteTaxonomy.ps1|*_DATA_Domain controllers.xml|domaincontroller|Collect-ADUptimeAndVersion.ps1|MEDIUM
+A-S-ADDS-JumpServer-Missing|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Domain.xml|domain|NEED_NEW_COLLECTOR|LOW
+A-S-ADDS-LAPS-NotDeployed|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-ADDS-PasswordNeverExpires|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-ADDS-ServiceUnconstrainedDelegation|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-ADDS-WDigestEnabled|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|registry_value|Collect-GPOSettings.ps1|MEDIUM
+A-A-ServersPwdNoChange45|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-A-SHA0IntermediateCert|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml||UNKNOWN|LOW
+A-A-SHA0RootCert|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate|Collect-ADCS.ps1|MEDIUM
+A-A-SHA1RootCert|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_PKI Authorities.xml|trusted_certificate|Collect-ADCS.ps1|MEDIUM
+A-A-SIDHistoryPresent|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml||UNKNOWN|LOW
+A-A-SmartcardPwdExpire|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domainDNS|NEED_NEW_COLLECTOR|LOW
+A-A-SmartCardPwdRotation|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain|NEED_NEW_COLLECTOR|LOW
+A-A-SmartCardRequired|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-A-UnixPwd|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-WIN-Audit-SensitivePrivilegeUse-SuccessOnly|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|advanced_audit_policy|Collect-GPOAuditSettings.ps1|MEDIUM
+A-P-ADMINPWD-TOO-OLD|active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-P-ControlPathIndirectMany|active_directory/Collect-ADCompleteTaxonomy.ps1|*_ACL_*.xml|control_path|NEED_NEW_COLLECTOR|LOW
+A-P-DangerousExtendedRight|active_directory/Collect-ADCompleteTaxonomy.ps1|*_ACL_*.xml|delegation|Collect-Delegations.ps1|HIGH
+A-P-Delegated|Collect-ADCompleteTaxonomy.ps1|*_ACL_*.xml|delegation|Collect-Delegations.ps1|HIGH
+A-P-DelegationA2D2|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml||UNKNOWN|LOW
+A-P-DelegationDCa2d2|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-P-DelegationEveryone|Collect-ADCompleteTaxonomy.ps1|*_ACL_*.xml|delegation|Collect-Delegations.ps1|HIGH
+A-P-DelegationSourceDeleg|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-P-DelegationT2A4D|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml||UNKNOWN|LOW
+A-P-DelegationT4D|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml||UNKNOWN|LOW
+A-P-DisplaySpecifier|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_*.xml|display_specifier|Collect-DisplaySpecifier.ps1|HIGH
+A-P-Inactive|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-P-PrivilegedPasswordNeverExpires|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-P-PrivilegeEveryone|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_privilege|Collect-GPOUserRights.ps1|HIGH
+A-P-ProtectedUsers|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-P-RecoveryModeUnprotected|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_lsa_policy|Collect-GPOSettings.ps1|MEDIUM
+A-P-UnconstrainedDelegation|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml||UNKNOWN|LOW
+A-P-UnknownDelegation|Collect-ADCompleteTaxonomy.ps1|*_ACL_*.xml|delegation|Collect-Delegations.ps1|HIGH
+A-S-ADRegistration|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml||UNKNOWN|LOW
+A-S-AesNotEnabled|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml||UNKNOWN|LOW
+A-S-AesNotEnabled-Computer|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-AesNotEnabled-User|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-C-PrimaryGroup|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+S-DCMissingConfigObjects|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+S-DCMissingDelegation|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-DCRegistration|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-DCSubnetMissing|Collect-ADCompleteTaxonomy.ps1|*_DATA_Domain controllers.xml|domain_controller|Collect-ADUptimeAndVersion.ps1|MEDIUM
+S-S-DefaultOUChanged|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|default_ou_redirect|UNKNOWN|LOW
+S-S-DefenderASR|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_defender_asr|Collect-GPOSettings.ps1|MEDIUM
+S-DefenderASR-Block|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_defender_asr|Collect-GPOSettings.ps1|MEDIUM
+A-S-DefenderASR-Critical|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|defender_asr_rule|Collect-GPOSettings.ps1|MEDIUM
+S-S-DefenderASR-Office|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|defender_asr_rule|Collect-GPOSettings.ps1|MEDIUM
+S-S-DefenderASR-Preview|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_defender_asr|Collect-GPOSettings.ps1|MEDIUM
+A-S-DefenderASR-Scripts|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|defender_asr_rule|Collect-GPOSettings.ps1|MEDIUM
+A-S-DesEnabled-Computer|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-DesEnabled-User|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-DESPresent|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml||UNKNOWN|LOW
+S-S-DomainAdminsUpdated|Collect-ADCompleteTaxonomy.ps1|*_DATA_Groups.xml|group|NEED_NEW_COLLECTOR|LOW
+S-S-FolderOptions|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_folder_option_missing|Collect-GPOSettings.ps1|MEDIUM
+A-S-InactiveComputer|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-InactiveDC|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-Inactive|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-S-KerberosArmoring|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_lsa_policy|Collect-GPOSettings.ps1|MEDIUM
+A-S-KerberosArmoringDC|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_lsa_policy|Collect-GPOSettings.ps1|MEDIUM
+S-KerberosWeakEncryptionDC|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_lsa_policy|Collect-GPOSettings.ps1|MEDIUM
+A-S-MS14-068|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+S-S-MS17-010|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-NoPreAuth-Computer|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-NoPreAuth-User|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-NoPreAuthAdmin-Computer|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-NoPreAuthAdmin-User|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-OldNtlm|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_policy|Collect-GPOSettings.ps1|MEDIUM
+A-S-PwdLastSet-45|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-PwdLastSet-90|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-PwdLastSet-DC|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+S-S-PwdLastSetCluster|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-PwdNeverExpires-Aggregate|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-S-PwdNeverExpires-Aggregate-10|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-S-PwdNeverExpires-Aggregate-20|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-S-PwdNeverExpires-Aggregate-50|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-S-PwdNeverExpires-Individual|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-PwdNotRequired|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-S-Reversible-Computer|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-Reversible-User|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-ReversiblePassword|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-ScriptToInternet|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_firewall_rule|Collect-GPOSettings.ps1|MEDIUM
+S-S-SIDHistory-Computer|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-S-SIDHistory-User|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+S-T-Downlevel|Collect-ADCompleteTaxonomy.ps1|*_DATA_trustedDomain.xml|trustedDomain|Collect-Trusts.ps1|HIGH
+S-T-Inactive|Collect-ADCompleteTaxonomy.ps1|*_DATA_trustedDomain.xml|trustedDomain|Collect-Trusts.ps1|HIGH
+S-S-TerminalServiceGPO|Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_terminal_service_issue|Collect-GPOSettings.ps1|MEDIUM
+S-S-UserAccountAgeExcessive|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+S-S-UserAccountExpired|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+S-S-UserExpiringToday|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-T-AzureADSSO|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+A-T-SIDFiltering|Collect-ADCompleteTaxonomy.ps1|*_DATA_trustedDomain.xml|trust|Collect-Trusts.ps1|HIGH
+A-T-SIDHistoryAuditingGroup|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domain_config|NEED_NEW_COLLECTOR|LOW
+S-P-T-SIDHistoryDangerous|Collect-ADCompleteTaxonomy.ps1|*_DATA_Users.xml|user|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+T-T-Downlevel|Collect-ADCompleteTaxonomy.ps1|*_DATA_trustedDomain.xml|trust|Collect-Trusts.ps1|HIGH
+T-T-Inactive|Collect-ADCompleteTaxonomy.ps1|*_DATA_trustedDomain.xml|trust|Collect-Trusts.ps1|HIGH
+S-T-TGTDelegation|Collect-ADCompleteTaxonomy.ps1|*_DATA_trustedDomain.xml|trustedDomain|Collect-Trusts.ps1|HIGH
+A-T-TrustSIDFiltering|Collect-ADCompleteTaxonomy.ps1|*_DATA_trustedDomain.xml|trust_relationship|Collect-Trusts.ps1|HIGH
+A-T-TrustTGTDelegation|Collect-ADCompleteTaxonomy.ps1|*_DATA_trustedDomain.xml|trust_relationship|Collect-Trusts.ps1|HIGH
+A-AuditPowershell|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_lsa_policy|Collect-GPOSettings.ps1|MEDIUM
+A-T-GPODelegationEnabled|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|groupPolicyContainer|Collect-GPOSettings.ps1|MEDIUM
+A-T-GPOModifiedRecently|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|groupPolicyContainer|Collect-GPOSettings.ps1|MEDIUM
+A-TRAC-AuditAccountLogon|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|groupPolicyContainer|Collect-GPOSettings.ps1|MEDIUM
+A-TRAC-AuditAccountManagement|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|groupPolicyContainer|Collect-GPOSettings.ps1|MEDIUM
+A-TRAC-AuditDirectoryService|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|groupPolicyContainer|Collect-GPOSettings.ps1|MEDIUM
+A-TRAC-AuditLogonEvents|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|groupPolicyContainer|Collect-GPOSettings.ps1|MEDIUM
+A-TRAC-AuditObjectAccess|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|groupPolicyContainer|Collect-GPOSettings.ps1|MEDIUM
+A-TRAC-AuditPolicyChange|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|groupPolicyContainer|Collect-GPOSettings.ps1|MEDIUM
+A-TRAC-AuditPrivilegeUse|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|groupPolicyContainer|Collect-GPOSettings.ps1|MEDIUM
+A-TRAC-AuditSystemEvents|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|groupPolicyContainer|Collect-GPOSettings.ps1|MEDIUM
+A-TRAC-DCSecurityLogRetention|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-TRAC-DCSecurityLogSize|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-TRAC-LogAlerting|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Groups.xml|group|NEED_NEW_COLLECTOR|LOW
+A-TRAC-LogCentralization|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_DomainController.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-P-LogonDenied|scripts/collect/active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_GPO.xml|gpo_privilege|Collect-GPOUserRights.ps1|HIGH
+A-VULN-ADCS-ESC1|Collect-ADCompleteTaxonomy.ps1|*_DATA_CertificateTemplates.xml|pKICertificateTemplate|Collect-ADCS.ps1|MEDIUM
+A-VULN-ADCS-ESC8|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-ADDS-PrivEsc-CVE-2025-21293|active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-CLFSPrivEsc-CVE-2021-43226|active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-ImproperAccessControl-CVE-2025-59230|active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-Kerberos-PrivEsc-CVE-2025-26647|active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-LDAP-RCE-CVE-2022-22012|active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-LDAP-RCE-CVE-2022-29130|active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-LDAP-RCE-CVE-2024-49112|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-LDAPNightmare-CVE-2024-49112|active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-LDAPNightmare-CVE-2024-49113|active_directory/Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-noPac-CVE-2021-42287|Collect-ADCompleteTaxonomy.ps1|CONFIGURATION_DATA_Directory Service.xml|domainDNS|NEED_NEW_COLLECTOR|LOW
+A-VULN-NTLM-PrivEsc-CVE-2025-21311|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-NTLMHashDisclosure-CVE-2024-43451|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-NTLMHashDisclosure-CVE-2025-24054|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-PetitPotam-CVE-2021-36942|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-PowerShellCommandInjection-CVE-2025-54100|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-PrintNightmare-CVE-2021-34527|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-RaceCondition-CVE-2025-62215|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-ShadowCredentials|Collect-ADCompleteTaxonomy.ps1|*_DATA_Domain.xml|domainDNS|NEED_NEW_COLLECTOR|LOW
+A-VULN-SMBClientPrivEsc-CVE-2025-33073|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-TaskSchedulerPrivEsc-CVE-2024-49039|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-UseAfterFree-CVE-2025-62221|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-Win32kPrivEsc-CVE-2023-29336|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-Windows-DWM-CVE-2026-20805|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-WindowsInstallerPrivEsc-CVE-2024-38014|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-WSUSDeserializationRCE-CVE-2025-59287|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
+A-VULN-ZeroLogon-CVE-2020-1472|Collect-ADCompleteTaxonomy.ps1|*_DATA_Computers.xml|computer|Collect-ADObjectsSecurityAttributes.ps1|MEDIUM
